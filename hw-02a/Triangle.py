@@ -26,32 +26,35 @@ def classifyTriangle(a,b,c):
       
       BEWARE: there may be a bug or two in this code
     """
-
+      # verify that all 3 inputs are integers  
+    # Python's "isinstance(object,type) returns True if the object is of the specified type
+    if not(isinstance(a,int) and isinstance(b,int) and isinstance(c,int)): #reorganized this snippet to top to prevent conversion errors
+        return 'InvalidInput' #removed ;
+    
     # require that the input values be >= 0 and <= 200
     if a > 200 or b > 200 or c > 200:
         return 'InvalidInput'
         
-    if a <= 0 or b <= b or c <= 0:
+    if a <= 0 or b <= 0 or c <= 0: #fixed typo b <=b
         return 'InvalidInput'
-    
-    # verify that all 3 inputs are integers  
-    # Python's "isinstance(object,type) returns True if the object is of the specified type
-    if not(isinstance(a,int) and isinstance(b,int) and isinstance(c,int)):
-        return 'InvalidInput';
       
     # This information was not in the requirements spec but 
     # is important for correctness
     # the sum of any two sides must be strictly less than the third side
     # of the specified shape is not a triangle
-    if (a >= (b - c)) or (b >= (a - c)) or (c >= (a + b)):
+    sides = sorted([a, b, c]) #added sorting function to ensure a, b, and c are assigned correctly
+    a = sides[0]
+    b = sides[1]
+    c = sides[2]
+    if (a >= (b + c)) or (b >= (a + c)) or (c >= (a + b)): #changed - to +
         return 'NotATriangle'
         
     # now we know that we have a valid triangle 
-    if a == b and b == a:
+    if a == b and b == c: #changed b == a to b==c to ensure all sides are equal
         return 'Equilateral'
-    elif ((a * 2) + (b * 2)) == (c * 2):
+    elif ((a**2) + (b**2)) == (c**2): #changed * to **
         return 'Right'
-    elif (a != b) and  (b != c) and (a != b):
+    elif (a != b) and  (b != c) and (a != c): #changed a !=b to a != c to ensure all sides are NOT equal
         return 'Scalene'
     else:
-        return 'Isoceles'
+        return 'Isosceles' #typo of Isosceles corrected
