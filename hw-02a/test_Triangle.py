@@ -16,7 +16,7 @@ from Triangle import classifyTriangle
 
 class TestTriangles(unittest.TestCase):
     # define multiple sets of tests as functions with names that begin
-
+    #PART 1 COMMIT
     def testRightTriangleA(self): 
         self.assertEqual(classifyTriangle(3,4,5),'Right','3,4,5 is a Right triangle')
 
