@@ -9,18 +9,17 @@ jobs:
       
 image: cimg/python:3.10.2
   steps:
-checkout
-run:
-    name: Install pytest
-    command: pip install pytest
-run:
-  name: Run tests
-  command: pytest --junitxml=test-results/junit.xml TestTriangle.py
-store_test_results:
-  path: test-results
+  - checkout
+  - run:
+      name: Install pytest
+      command: pip install pytest
+  - run:
+      name: Run tests
+      command: pytest --junitxml=test-results/junit.xml TestTriangle.py
+  - store_test_results:
+      path: test-results
 
 workflows:
   testing_triangles:
-    jobs:
-      
-build-and-test
+    jobs:    
+  - build-and-test
