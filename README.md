@@ -1,1 +1,1 @@
-Please visit hw02-a to see build badge
+Please visit hw-02a to see build badge
