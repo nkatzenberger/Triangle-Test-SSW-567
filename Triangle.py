@@ -19,7 +19,7 @@ class classify_triangle:
  
     def triangle_Type(self):
         # Determine type of triangle
-        if(self.is_A_Triangle == False):
+        if(not self.is_A_Triangle()):
             return "Not a Triangle"
         else:
             Right = ""

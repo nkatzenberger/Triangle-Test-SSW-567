@@ -43,6 +43,9 @@ class TriangleTest(unittest.TestCase):
         self.assertEqual(classify_triangle(15, 32, 34).triangle_Type(), "Scalene")
         self.assertEqual(classify_triangle(3,4,5).triangle_Type(), "Scalene and Right")
         self.assertNotEqual(classify_triangle(10,10,5).triangle_Type(), "Scalene")
+    def test_triangle_type_not_a_triangle(self):
+        self.assertEqual(classify_triangle(1,3,5).triangle_Type(), "Not a Triangle")
+        self.assertEqual(classify_triangle(2,3,7).triangle_Type(), "Not a Triangle")
 if __name__ == '__main__':
     print('Running unit tests')
     unittest.main()
